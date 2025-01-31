@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!-- If your interested in the javascript code go ahead and take a look, tinker with it, do whatever :) -->
+<html lang="en">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
+        <link rel="icon" href="stylesheets/images/favicon.ico"></image>
+        <link rel="stylesheet" href="stylesheets/boids.css">
+        <title>BOIDS Simulation</title>
+    </head>
+    <body>
+        <h2>BOIDS</h2>
+        <canvas id="boids" height="400px" width="800px" style="border: 4px solid white;  background-color: black;"></canvas>
+        <div class="buttonsContainer">
+            <button class="button" id="reset">Reset Simulation</button>
+            <button class="button" id="devMode">Toggle Dev Mode</button>
+        </div>
+        <h4>Boids is an artificial life simulation that closely resembles the flocking behavior of birds or fish.</h4>
+        <h4>The simulation follows three simple algorithms: Seperation, Alignment, and Cohesion.</h4>
+        <h4>This sim also adds a digital pet mechanic!  Take care of your boids, feed them and keep them happy,</h4>
+        <h4>otherwise, you'll find that there are consequences to neglcting your pets.</h4>
+        <script src="scripts/boids.js"></script>
+    </body>
+</html>

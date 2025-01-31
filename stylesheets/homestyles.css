@@ -1,0 +1,79 @@
+body {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    font-family: "Montserrat";
+    background-color: black;
+    padding: 100px;
+    border: 1px white solid;
+    position:fixed;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    top: 5px;
+
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes beatingAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+
+    }
+
+    100% {
+        opacity: 0;
+    }
+    
+}
+
+img {
+    animation: beatingAnimation ease 4s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    width: 400px;
+    height: 400px;
+    position: absolute; left: 50px; top: 75px ;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 100;
+    color: white;
+    text-align: right;
+    margin-top: 200px;
+
+}
+
+h2 {
+    color: white;
+    font-weight: 100;
+    text-align: right;
+
+}
+
+p {
+    color: white;
+    text-align: right;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+

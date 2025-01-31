@@ -1,0 +1,99 @@
+
+body {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
+    font-family: "Montserrat";
+    
+    background-color: #000000;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0px;
+    display: inline-block;
+    
+}
+
+header img {
+    margin: 0px;
+    display: inline-block;
+    max-width: 50px;
+    max-height: 50px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+li {
+    display: inline;
+}
+
+section {
+    padding: 50px 0;
+}
+
+section h2 {
+    margin-bottom: 20px;
+}
+
+.portfolio-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.portfolio-item {
+    width: calc(33.33% - 20px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+}
+
+footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+}
