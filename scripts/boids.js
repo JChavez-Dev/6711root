@@ -34,22 +34,32 @@ function getRandInt(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function getRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
 
 class boid {
 
-    constructor(x, y, dx, dy, protRange, range){
+    constructor(x, y, dx, dy, protRange, range, color){
         this.x = x;
         this.y = y;
         this.dx = dx;
         this.dy = dy;
         this.protRange = protRange;
         this.range = range;
+        this.color = color
     }
 
     drawBoid(b){
         b.beginPath();
         b.arc(this.x, this.y, 2, 0, 2 * Math.PI);
-        b.fillStyle = boidColor;
+        b.fillStyle = this.color;
         b.fill();    
     }
 }
@@ -61,15 +71,19 @@ function distance(boid, otherBoid){
 function setEdgeReaction(boid){
     if (boid.y < topMargin){
         boid.dy += turnFactor;
+        boid.color = getRandomColor();
     }
     if (boid.x > rightMargin){
         boid.dx -= turnFactor;
+        boid.color = getRandomColor();
     }
     if (boid.x < leftMargin){
         boid.dx += turnFactor;
+        boid.color = getRandomColor();
     }
     if (boid.y > bottomMargin){
         boid.dy -= turnFactor;
+        boid.color = getRandomColor();
     }
     
 }
@@ -150,8 +164,18 @@ function setSpeedLimit(boid){
 
 function drawBoidStats(health){
     b.font = "20px Courier New";
+    b.fillStyle = boidColor;
     b.fillText("Health: " + health, 10, 30)
-    b.fillText("Happiness: " + health, 200, 30);
+    b.fillText("Happiness: " + health, boidsCanvas.width - 180, 30);
+}
+
+//dev mode statistics
+function drawDevStats(match){
+    b.font = "15px Courier New";
+    b.fillStyle = boidColor;
+    b.fillText("Seperation: " + match, 10, 380);
+    // b.fillText("Alignment: " + matchingFactor, );
+    // b.fillText("Cohesion: " + centeringFactor, );
 }
 
 //in the initialize function:
@@ -163,12 +187,13 @@ function initialize(){
     b.clearRect(0,0, boidsCanvas.width, boidsCanvas.height);
     for(let i = 0; i < count; i++){
 
-        const temp = new boid(getRandInt(leftMargin, rightMargin), getRandInt(topMargin, bottomMargin), 0, 0, boidProtectedRange, boidRange);
+        const temp = new boid(getRandInt(leftMargin, rightMargin), getRandInt(topMargin, bottomMargin), 0, 0, boidProtectedRange, boidRange, boidColor);
         boidArr.push(temp);
         boidArr[i].drawBoid(b);
     }
 
     drawBoidStats(health);
+    drawDevStats(centeringFactor);
     // do not request an animation frame here!
     // when you reset the simulation the HTML treats it as a reload of the pages contents
     // this calls back the onload function!
@@ -195,6 +220,7 @@ function draw(){
         boidArr[boid].drawBoid(b);
     }
     drawBoidStats(health);
+    drawDevStats(centeringFactor);
     requestAnimationFrame(draw);
 }
 
