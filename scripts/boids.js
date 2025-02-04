@@ -154,6 +154,14 @@ function drawBoidStats(health){
     b.fillText("Happiness: " + health, 200, 30);
 }
 
+function drawDevStats(seperation, alignment, cohesion){
+    b.font = "10px Courier New";
+    b.fillStyle = boidColor;
+    b.fillText("Seperation: " + seperation, 10, 380);
+    b.fillText("Alignment: " + alignment, 200, 380);
+    b.fillText("Cohesion: " + cohesion, 400, 380);
+}
+
 //in the initialize function:
 // 1. populate the canvas with random boids
 // 2. call the draw function
@@ -195,6 +203,7 @@ function draw(){
         boidArr[boid].drawBoid(b);
     }
     drawBoidStats(health);
+    drawDevStats(avoidFactor, matchingFactor, centeringFactor);
     requestAnimationFrame(draw);
 }
 
