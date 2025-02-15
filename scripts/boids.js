@@ -12,7 +12,7 @@ const topMargin = 50;
 const bottomMargin = boidsCanvas.height - topMargin;
 
 const count = 100;
-const boidColor = "#FFFFFF";
+const boidColor = "#FFAB00";
 
 
 //boid values... eventually have them tunable!
@@ -47,11 +47,23 @@ class boid {
     }
 
     drawBoid(b){
-        b.beginPath();
-        b.arc(this.x, this.y, 2, 0, 2 * Math.PI);
+        
         b.fillStyle = boidColor;
-        b.fill();    
+        b.translate(this.x, this.y);
+        b.rotate(Math.atan2(this.dy, this.dx));
+        b.translate(-this.x, -this.y);
+        b.beginPath();
+        b.moveTo(this.x,this.y);
+        b.lineTo(this.x - 10, this.y + 5);
+        b.lineTo(this.x - 10, this.y - 5);
+        b.lineTo(this.x, this.y)
+        b.stroke();
+        b.fill();
+        b.setTransform(1, 0, 0, 1, 0, 0);
+
     }
+
+    
 }
 
 function distance(boid, otherBoid){
@@ -150,13 +162,14 @@ function setSpeedLimit(boid){
 
 function drawBoidStats(health){
     b.font = "20px Courier New";
+    b.fillStyle = "#FFFFFF";
     b.fillText("Health: " + health, 10, 30)
     b.fillText("Happiness: " + health, 200, 30);
 }
 
 function drawDevStats(seperation, alignment, cohesion){
     b.font = "10px Courier New";
-    b.fillStyle = boidColor;
+    b.fillStyle = "#FFFFFF";
     b.fillText("Seperation: " + seperation, 10, 380);
     b.fillText("Alignment: " + alignment, 200, 380);
     b.fillText("Cohesion: " + cohesion, 400, 380);
